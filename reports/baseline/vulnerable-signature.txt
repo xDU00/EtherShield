@@ -1,0 +1,185 @@
+Multiple frameworks detected: solc, Solc-json. Using solc (highest priority). Use --compile-force-framework to override.
+'solc --version' running
+'solc @openzeppelin/contracts/=.deps/npm/@openzeppelin/contracts@5.6.1/ contracts/vulnerable/vulnerableSignature.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/haythem/EtherShield/contracts/vulnerable' running
+Compilation warnings/errors on contracts/vulnerable/vulnerableSignature.sol:
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:125:29:
+    |
+125 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, signature);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:134:29:
+    |
+134 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecoverCalldata(hash, signature);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:161:29:
+    |
+161 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, r, vs);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:203:29:
+    |
+203 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, v, r, s);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:273:26:
+    |
+273 |     function _throwError(RecoverError error, bytes32 errorArg) private pure {
+    |                          ^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+Detector: incorrect-exp
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) has bitwise-xor operator ^ instead of the exponentiation operator **: 
+	 - inverse = (3 * denominator) ^ 2 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#259)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-exponentiation
+INFO:Detectors:
+Detector: divide-before-multiply
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- denominator = denominator / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#244)
+	- inverse = (3 * denominator) ^ 2 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#259)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- denominator = denominator / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#244)
+	- inverse *= 2 - denominator * inverse (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#263)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- denominator = denominator / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#244)
+	- inverse *= 2 - denominator * inverse (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#264)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- denominator = denominator / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#244)
+	- inverse *= 2 - denominator * inverse (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#265)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- denominator = denominator / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#244)
+	- inverse *= 2 - denominator * inverse (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#266)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- denominator = denominator / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#244)
+	- inverse *= 2 - denominator * inverse (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#267)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- denominator = denominator / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#244)
+	- inverse *= 2 - denominator * inverse (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#268)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) performs a multiplication on the result of a division:
+	- low = low / twos (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#247)
+	- result = low * inverse (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#274)
+Math.invMod(uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#317-363) performs a multiplication on the result of a division:
+	- quotient = gcd / remainder (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#339)
+	- (gcd,remainder) = (remainder,gcd - remainder * quotient) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#341-348)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+INFO:Detectors:
+Detector: assembly
+Bytes.slice(bytes,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#86-98) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#93-95)
+Bytes.splice(bytes,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#117-129) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#123-126)
+Bytes.replace(bytes,uint256,bytes,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#154-172) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#167-169)
+Bytes.concat(bytes[]) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#183-203) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#194-196)
+Bytes.toNibbles(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#210-245) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#211-244)
+Bytes._unsafeReadBytesOffset(bytes,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#326-331) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#328-330)
+Panic.panic(uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Panic.sol#50-56) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Panic.sol#51-55)
+Strings.toString(uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#42-60) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#47-49)
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#52-54)
+Strings.toChecksumHexString(address) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#108-126) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#113-115)
+Strings.escapeJSON(string) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#461-505) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#468-470)
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#499-502)
+Strings._unsafeReadBytesOffset(bytes,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#513-518) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#515-517)
+Strings._unsafeWriteBytesOffset(bytes,uint256,bytes1) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#526-531) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#528-530)
+ECDSA.tryRecover(bytes32,bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#61-80) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#71-75)
+ECDSA.tryRecoverCalldata(bytes32,bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#85-104) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#95-99)
+ECDSA.parse(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#217-240) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#218-239)
+ECDSA.parseCalldata(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#245-268) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#246-267)
+MessageHashUtils.toEthSignedMessageHash(bytes32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#32-38) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#33-37)
+MessageHashUtils.toDataWithIntendedValidatorHash(address,bytes32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#71-81) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#75-80)
+MessageHashUtils.toTypedDataHash(bytes32,bytes32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#92-100) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#93-99)
+MessageHashUtils.toDomainSeparator(bytes1,bytes32,bytes32,uint256,address,bytes32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#137-179) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#147-178)
+MessageHashUtils.toDomainTypeHash(bytes1) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#182-227) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#185-226)
+Math.add512(uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#25-30) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#26-29)
+Math.mul512(uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#37-46) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#41-45)
+Math.tryMul(uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#73-84) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#76-80)
+Math.tryDiv(uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#89-97) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#92-95)
+Math.tryMod(uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#102-110) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#105-108)
+Math.mulDiv(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#206-277) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#229-236)
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#242-251)
+Math.tryModExp(uint256,uint256,uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#411-435) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#413-434)
+Math.tryModExp(bytes,bytes,bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#451-473) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#463-472)
+Math._zeroBytes(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#478-490) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#482-484)
+Math.log2(uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#619-658) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#655-657)
+SafeCast.toUint(bool) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/SafeCast.sol#1157-1161) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/SafeCast.sol#1158-1160)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+INFO:Detectors:
+Detector: pragma
+2 different versions of Solidity are used:
+	- Version constraint ^0.8.24 is used by:
+		-^0.8.24 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#4)
+		-^0.8.24 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Strings.sol#4)
+		-^0.8.24 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/MessageHashUtils.sol#4)
+	- Version constraint ^0.8.20 is used by:
+		-^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Panic.sol#4)
+		-^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#4)
+		-^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#4)
+		-^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/SafeCast.sol#5)
+		-^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/SignedMath.sol#4)
+		-^0.8.20 (contracts/vulnerable/vulnerableSignature.sol#3)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#different-pragma-directives-are-used
+INFO:Detectors:
+Detector: solc-version
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Panic.sol#4)
+	- ^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#4)
+	- ^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#4)
+	- ^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/SafeCast.sol#5)
+	- ^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/SignedMath.sol#4)
+	- ^0.8.20 (contracts/vulnerable/vulnerableSignature.sol#3)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Detector: too-many-digits
+Bytes.toNibbles(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#210-245) uses literals with too many digits:
+	- chunk_toNibbles_asm_0 = 0x0000000000000000ffffffffffffffff0000000000000000ffffffffffffffff & chunk_toNibbles_asm_0 << 64 | chunk_toNibbles_asm_0 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#222-225)
+Bytes.toNibbles(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#210-245) uses literals with too many digits:
+	- chunk_toNibbles_asm_0 = 0x00000000ffffffff00000000ffffffff00000000ffffffff00000000ffffffff & chunk_toNibbles_asm_0 << 32 | chunk_toNibbles_asm_0 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#226-229)
+Bytes.reverseBytes32(bytes32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#258-272) uses literals with too many digits:
+	- value = ((value >> 32) & 0x00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF) | ((value & 0x00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF00000000FFFFFFFF) << 32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#265-267)
+Bytes.reverseBytes32(bytes32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#258-272) uses literals with too many digits:
+	- value = ((value >> 64) & 0x0000000000000000FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF) | ((value & 0x0000000000000000FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF) << 64) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#268-270)
+Bytes.reverseBytes16(bytes16) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#275-286) uses literals with too many digits:
+	- value = ((value & 0xFFFFFFFF00000000FFFFFFFF00000000) >> 32) | ((value & 0x00000000FFFFFFFF00000000FFFFFFFF) << 32) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/Bytes.sol#282-284)
+Math.log2(uint256) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#619-658) uses literals with too many digits:
+	- r = r | byte(uint256,uint256)(x >> r,0x0000010102020202030303030303030300000000000000000000000000000000) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/math/Math.sol#656)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+INFO:Slither:contracts/vulnerable/vulnerableSignature.sol analyzed (9 contracts with 102 detectors), 50 result(s) found

@@ -1,0 +1,63 @@
+Multiple frameworks detected: solc, Solc-json. Using solc (highest priority). Use --compile-force-framework to override.
+'solc --version' running
+'solc @openzeppelin/contracts/=.deps/npm/@openzeppelin/contracts@5.6.1/ contracts/secure/secureSignature.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/haythem/EtherShield/contracts/secure' running
+Compilation warnings/errors on contracts/secure/secureSignature.sol:
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:125:29:
+    |
+125 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, signature);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:134:29:
+    |
+134 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecoverCalldata(hash, signature);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:161:29:
+    |
+161 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, r, vs);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:203:29:
+    |
+203 |         (address recovered, RecoverError error, bytes32 errorArg) = tryRecover(hash, v, r, s);
+    |                             ^^^^^^^^^^^^^^^^^^
+
+Warning: "error" will be promoted to keyword in the future and will not be allowed as an identifier anymore.
+   --> .deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol:273:26:
+    |
+273 |     function _throwError(RecoverError error, bytes32 errorArg) private pure {
+    |                          ^^^^^^^^^^^^^^^^^^
+
+
+INFO:Detectors:
+Detector: timestamp
+SecureSignature.executePayment(address,address,uint256,uint256,uint256,bytes) (contracts/secure/secureSignature.sol#47-97) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp <= deadline,Signature expired) (contracts/secure/secureSignature.sol#56)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+Detector: assembly
+ECDSA.tryRecover(bytes32,bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#61-80) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#71-75)
+ECDSA.tryRecoverCalldata(bytes32,bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#85-104) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#95-99)
+ECDSA.parse(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#217-240) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#218-239)
+ECDSA.parseCalldata(bytes) (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#245-268) uses assembly
+	- INLINE ASM (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#246-267)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+INFO:Detectors:
+Detector: solc-version
+Version constraint ^0.8.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- VerbatimInvalidDeduplication
+	- FullInlinerNonExpressionSplitArgumentEvaluationOrder
+	- MissingSideEffectsOnSelectorAccess.
+It is used by:
+	- ^0.8.20 (.deps/npm/@openzeppelin/contracts@5.6.1/utils/cryptography/ECDSA.sol#4)
+	- ^0.8.20 (contracts/secure/secureSignature.sol#3)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Slither:contracts/secure/secureSignature.sol analyzed (2 contracts with 102 detectors), 6 result(s) found
