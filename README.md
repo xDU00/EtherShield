@@ -5,9 +5,10 @@ Local network only (Remix VM). No real keys or funds.
 ## Vulnerabilities
 | Pair | Vulnerabilities |
 |---|---|
-| 1 | Reentrancy, Access Control |
-| 2 | tx.origin, Signature Replay |
-| 3 | Front-running / MEV, Denial of Service |
+| 1 | Reentrancy |
+| 2 | tx.origin, Access Control |
+| 3 | Signature Replay |
+| 4 | Front-running / MEV, Denial of Service |
 
 ## Structure
 - contracts/vulnerable – vulnerable contracts
@@ -31,9 +32,10 @@ works on building, attacking, fixing and reporting across different vulnerabilit
 
 | Pair | Build | Attack | Fix | Report + audit |
 |---|---|---|---|---|
-| 1. Reentrancy + Access Control | Member 1 | Member 2 | Member 3 | Member 4 |
-| 2. tx.origin + Signature Replay | Member 2 | Member 3 | Member 4 | Member 1 |
-| 3. Front-running + DoS | Member 3 | Member 4 | Member 1 | Member 2 |
+| 1. Reentrancy | Member 1 | Member 1 | Member 1 | Member 1 |
+| 2. tx.origin  + Access Control | Member 2 | Member 2 | Member 2 | Member 2 |
+| 3. Signature Replay | Member 3 | Member 3 | Member 3 | Member 3 |
+| 4. Front-running + DoS | Member 4 | Member 4 | Member 4 | Member 4 |
 
 ### Roles
 - **Build:** writes the vulnerable contracts for the pair (2 contracts).
