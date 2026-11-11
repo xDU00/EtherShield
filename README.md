@@ -44,13 +44,6 @@ works on building, attacking, fixing and reporting across different vulnerabilit
 - **Report + audit:** runs static analysis / Slither, classifies findings (real vs false positive),
   and writes the report sections: description, severity, impact, proof, fix, validation, remaining limits.
 
-### Support tasks (in each member's free phase)
-| Phase | Member | Task |
-|---|---|---|
-| Build | Member 4 | Test template, static analysis and Slither setup |
-| Attack | Member 1 | Fundamentals notes (EVM, gas, storage), setup and deployment docs |
-| Fix | Member 2 | Live demo script for the defense |
-| Report | Member 3 | Final report and slides assembly |
 
 ### Schedule
 | Week | Phase | Deliverable |
